@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/CSS/tranding.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+</head>
+<body>
+    <a href="{{url_for('welcome')}}" style="position: absolute; top: 3%; left: 1.5%;">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <-- Back 
+      </a>
+    <main>
+      <nav class="main-menu">
+        <div>
+          <div class="user-info">
+            <img src="{{ProfilePicture}}" alt="user" />
+            <p>{{UserProfile}}</p>
+          </div>
+
+      </nav>
+      
+      <section class="content">
+        <div class="left-content">
+          <form action="{{ url_for('update_search_value') }}" method="post">
+            <div class="toolbar centred">
+                <div class="search-bar glass centred">
+                    <label for="search-bar">
+                        <span class="search-icon centred material-icons">search</span>
+                    </label>
+                    <input type="text" id="search-bar" name="search_value" placeholder="" />
+                </div>
+            </div>
+            <button type="submit" style="display: none;"></button> 
+        </form>
+          <div class="artists">
+            <h1>Featured Trending Artists</h1>
+            <div class="artist-container containers">
+          
+            {% for i in range(8) %}
+              <div class="artist">
+                <img src="{{ artists[i]['image'] }}" alt="" />
+                <p>{{ artists[i]['artist'] }}</p>
+              </div>
+            {% endfor %}
+          
+            </div>
+          </div>
+          <div class="albums">
+            <h1>Tranding Albums</h1>
+            <div class="album-container containers">
+              <div class="album">
+                <div class="album-frame">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/en/6/6e/Taylor_Swift_%E2%80%93_The_Tortured_Poets_Department_%28album_cover%29.png"
+                    alt="" />
+                </div>
+                <div>
+                  <h2>Num 1 :
+                    The Tortured Poets Department</h2>
+                  <p>Taylor Swift</p>
+                </div>
+              </div>
+  
+              <div class="album">
+                <div class="album-frame">
+                  <img
+                    src="https://media.pitchfork.com/photos/63fe6e1126bf63d78bccb320/3:2/w_999,h_666,c_limit/Morgan%20Wallen-%20One%20Thing%20at%20a%20Time%20.jpeg"
+                    alt="" />
+                </div>
+                <div>
+                  <h2>Num 2 : One Thing At A Time</h2>
+                  <p>Morgan Wallen</p>
+                </div>
+              </div>
+  
+              <div class="album">
+                <div class="album-frame">
+                  <img
+                    src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/85521a12-cc46-4b9f-a742-21ba407ebd5e"
+                    alt="" />
+                </div>
+                <div>
+                  <h2>Num 3 : Born to Die</h2>
+                  <p>Lana Del Rey</p>
+                </div>
+              </div>
+  
+              <div class="album">
+                <div class="album-frame">
+                  <img
+                    src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/4e7bf466-7fa5-4dad-b628-5bca12833b64"
+                    alt="" />
+                </div>
+                <div>
+                  <h2>Num 4 : Endless Summer Vacation</h2>
+                  <p>Miley Cyrus</p>
+                </div>
+              </div>
+  
+              <div class="album">
+                <div class="album-frame">
+                  <img
+                    src="https://github.com/ecemgo/mini-samples-great-tricks/assets/13468728/f01f546a-7ab7-4e90-acb9-1c1e817b676d"
+                    alt="" />
+                </div>
+                <div>
+                  <h2>Num 5 : The Dark Side of The Moon</h2>
+                  <p>Pink Floyd</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="right-content">
+          <div class="recommended-songs">
+            <h1>Tranding Songs</h1>
+            <div class="song-container">
+              {% for song in recommended_songs %}
+              <div class="song">
+                <div class="song-img">
+                  <img src="{{ song['song_art_image_url'] }}" alt="" />
+                  <div class="overlay">
+                    <i class="fa-solid fa-play"></i>
+                  </div>
+                </div>
+                <div class="song-title">
+                  <h2>{{ song['title'] }}</h2>
+                  <p>{{ song['artist_names'] }}</p>
+                </div>
+                
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+  </body>
+  </html>
